@@ -24,6 +24,7 @@ app.post('/', (req,res) => {
 });
 
 // hooking up API, using Postman Node->Request snippet
+// dotenv for keys and such
 function emailAddMailchimp(email) {
 	var request = require("request");
 
