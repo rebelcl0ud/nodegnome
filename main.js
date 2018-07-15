@@ -1,14 +1,47 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-
-// app.get('/', (req,res) => {
-// 	res.end('we now have a res');
-// });
+const bodyParser = require('body-parser');
+require('dotenv').config({path: '.env'});
 
 // middleware
 app.use(express.static(path.join(__dirname,'/public')));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
+// server
 app.listen(3000, function() {
 	console.log('app is listening...');
 });
+
+// form
+app.post('/', (req,res) => {
+	let email = req.body.email;
+	emailAddMailchimp(email);
+	res.send('POST request successful');
+});
+
+// hooking up API, using Postman Node->Request snippet
+function emailAddMailchimp(email) {
+	var request = require("request");
+
+	var options = { method: 'POST',
+	  url: `https://us18.api.mailchimp.com/3.0/lists/${process.env.LIST_ID}/members`,
+	  headers: 
+	   { 'Postman-Token': process.env.PT,
+	     'Cache-Control': 'no-cache',
+	     Authorization: process.env.AUTH,
+	     'Content-Type': 'application/json' },
+	  body: 
+	   { email_address: email,
+	     status: 'subscribed' },
+	  json: true };
+
+	request(options, function (error, response, body) {
+	  if (error) throw new Error(error);
+
+	  console.log(body);
+	});
+}
