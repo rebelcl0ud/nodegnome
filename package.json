@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "watch":"nodemon -L ./index.js --ignore public/",
+    "watch":"nodemon -L --ignore public/",
     "assets": "webpack",
     "start": "concurrently 'npm run watch' 'npm run assets' --names '💻,📦' --prefix name"
   },
