@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker');
+/* 
+font-family: 'Permanent Marker', cursive;
+font-family: 'Open Sans', sans-serif;
+*/
+html {
+	margin: 25px;
+	height: 100vh;
+	background: radial-gradient(#faebd7, #d7faeb);
+}
+
+.wrapper {
+	display:grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	justify-items: center;
+}
+
+h1 {
+	grid-column: 1/5;
+	padding: 10px;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 2em;
+}
+
+P {
+	grid-column: 2/4;
+	padding: 10px;
+}
+
+form {
+	grid-column: 2/4;
+}
+
+p,
+form,
+button {
+	font-family: 'Open Sans', sans-serif;
+}
+
+button {
+	padding: 2px;
+}
