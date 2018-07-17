@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // server
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
 	console.log('app is listening...');
 });
 
