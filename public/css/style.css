@@ -22,7 +22,7 @@ h1 {
 	font-size: 2em;
 }
 
-P {
+p {
 	grid-column: 2/4;
 	padding: 10px;
 }
