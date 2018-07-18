@@ -7,9 +7,9 @@ require('dotenv').config({path: '.env'});
 // middleware
 app.use(express.static(path.join(__dirname,'/public')));
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // server
 app.listen(process.env.PORT || 3000, function() {
@@ -26,23 +26,23 @@ app.post('/', (req,res) => {
 // hooking up API, using Postman Node->Request snippet
 // dotenv for keys and such
 function emailAddMailchimp(email) {
-	var request = require("request");
+	const request = require('request');
 
-	var options = { method: 'POST',
-	  url: `https://us18.api.mailchimp.com/3.0/lists/${process.env.LIST_ID}/members`,
-	  headers: 
-	   { 'Postman-Token': process.env.PT,
-	     'Cache-Control': 'no-cache',
-	     Authorization: process.env.AUTH,
-	     'Content-Type': 'application/json' },
-	  body: 
-	   { email_address: email,
-	     status: 'subscribed' },
-	  json: true };
+	let options = { method: 'POST',
+		url: `https://us18.api.mailchimp.com/3.0/lists/${process.env.LIST_ID}/members`,
+		headers: 
+			{ 'Postman-Token': process.env.PT,
+				'Cache-Control': 'no-cache',
+				Authorization: process.env.AUTH,
+				'Content-Type': 'application/json' },
+		body: 
+			{ email_address: email,
+				status: 'subscribed' },
+		json: true };
 
-	request(options, function (error, response, body) {
-	  if (error) throw new Error(error);
+	request(options, (error, response, body) => {
+		if (error) throw new Error(error);
 
-	  console.log(body);
+		console.log(body);
 	});
 }
