@@ -37,7 +37,9 @@ form {
 
 p,
 form,
-button {
+button,
+.success-alert,
+.error-alert {
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -59,4 +61,20 @@ input:valid {
 
 button:hover {
 	background: #d7faeb;
+}
+
+.success-alert {
+	background:#a9f4d5;
+	border-radius: 4px;
+	text-align: center;
+	padding: 15px;
+	color:black;
+}
+
+.error-alert {
+	background:#F5A9C9;
+	border-radius: 4px;
+	text-align: center;
+	padding: 15px;
+	color:black;
 }
